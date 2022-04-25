@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "firebase-implementation-model",
+    "slug": "firebase-implementation-model",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
