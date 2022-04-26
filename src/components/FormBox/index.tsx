@@ -18,7 +18,6 @@ export function FormBox() {
       description,
       quantity,
       done: false,
-      //trabalhando com datas - timestamp FieldValue.serverTimestamp()
       createdAt: firestore.FieldValue.serverTimestamp(),
     })
     .then(() => {
