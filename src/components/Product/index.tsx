@@ -1,5 +1,7 @@
 import React from 'react';
 
+import firestore from '@react-native-firebase/firestore';
+
 import { ButtonIcon } from '../ButtonIcon';
 import { Container, Info, Title, Quantity, Options } from './styles';
 
@@ -15,6 +17,19 @@ type Props = {
 }
 
 export function Product({ data }: Props) {
+
+  function handleDoneToggle(){
+    firestore()
+    .collection('products')
+    .doc(data.id)
+    //done: !data.done -> pega o que já tem e inverter. ex: se tiver false vira true e vice-versa.
+    .update({
+      done: !data.done,
+      // description: 'Pão de queijo',
+      // quantity: data.quantity - 1,
+    })
+  }
+
   return (
     <Container>
       <Info>
@@ -30,6 +45,7 @@ export function Product({ data }: Props) {
       <Options>
         <ButtonIcon
           icon={data.done ? "undo" : "check"}
+          onPress={handleDoneToggle}
         />
 
         <ButtonIcon

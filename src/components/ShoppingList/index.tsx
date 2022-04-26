@@ -13,10 +13,6 @@ export function ShoppingList() {
   useEffect(() => {
     const subscribe = firestore()
     .collection('products')
-    .orderBy('quantity')
-    .startAt(2)
-    .endAt(4)
-    // .endBefore(5)
     .onSnapshot(querySnapshot => {
       const data = querySnapshot.docs.map(doc => {
         return {
