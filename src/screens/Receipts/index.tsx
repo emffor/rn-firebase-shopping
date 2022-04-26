@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList } from 'react-native';
+import { Alert, FlatList } from 'react-native';
 
 import storage from '@react-native-firebase/storage';
 
@@ -23,9 +23,25 @@ export function Receipts() {
     const info = await storage().ref(path).getMetadata();
     setPhotoInfo(`Upload realizada em ${info.timeCreated}`);
     // console.log('info: ' + info.timeCreated);
+
+    fetchImages();
   }
 
-  useEffect(() => {
+  //deleta arquivos no storage do firebase
+  async function handleDeleteImage(path: string) {
+    await storage()
+    .ref(path)
+    .delete()
+    .then(() => {
+      Alert.alert('Imagem excluída com sucesso!')
+      //2 - e chama quando for deletado pra recarregar as imagens
+      fetchImages();
+    })
+    .catch(error => console.error(error));
+  }
+
+  //fazer recarregar a tela. //agora é uma função que busca pelas imagens
+  async function fetchImages(){
     storage()
     .ref('/images')
     .list()
@@ -41,6 +57,13 @@ export function Receipts() {
 
       setPhotos(files);
     })
+  }
+
+  //chama a função aqui agora
+  useEffect(() => {
+    //chamando a função em dois lugares.
+    //1- quando carregar a interface, busca as imagens
+    fetchImages();
   },[]);
 
   return (
@@ -60,7 +83,7 @@ export function Receipts() {
           <File
             data={item}
             onShow={() => handleShowImage(item.path)}
-            onDelete={() => { }}
+            onDelete={() => handleDeleteImage(item.path)}
           />
         )}
         contentContainerStyle={{ paddingBottom: 100 }}
