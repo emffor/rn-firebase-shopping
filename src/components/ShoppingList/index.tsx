@@ -10,7 +10,7 @@ import { Product, ProductProps } from '../Product';
 export function ShoppingList() {
   const [products, setProducts] = useState<ProductProps[]>([]);
 
-/*   //usar o useEffect ler os documentos de uma coleção e carregar os documentos no "products" para ser listado na <FlatList/>.
+  //usar o useEffect ler os documentos de uma coleção e carregar os documentos no "products" para ser listado na <FlatList/>.
   useEffect(() => {
     firestore()
     .collection('products')
@@ -26,8 +26,9 @@ export function ShoppingList() {
       setProducts(data);
     })
     .catch(error => console.error(error));
-  }, []); */
+  }, []); 
   
+/*   //LEITURA DE UM ÚNICO DOCUMENTO
   useEffect(() => {
     firestore()
     .collection('products')
@@ -38,7 +39,7 @@ export function ShoppingList() {
       ...response.data()
     }));
     
-  },[]);
+  },[]); */
 
   return (
     <FlatList
