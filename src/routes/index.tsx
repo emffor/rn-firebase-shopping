@@ -15,8 +15,7 @@ export function Routes() {
   
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged((userInfo) => {
-      console.log(userInfo);
-      
+      // console.log(userInfo);
       setUser(userInfo);
       
     });

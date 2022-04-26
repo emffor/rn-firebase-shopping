@@ -53,6 +53,13 @@ export function SignIn() {
       }
     })
    };
+
+  //ligar com esqueceu a senha.
+  function handleForgotPassword(){
+    auth()
+    .sendPasswordResetEmail(email)
+    .then(() => Alert.alert('Enviamos um link para seu E-mail para você redefinir sua senha!'))
+  }
   
 
   return (
@@ -75,7 +82,12 @@ export function SignIn() {
       <Button title="Entrar" onPress={handleSignInWithEmailAndPassword} />
 
       <Account>
-        <ButtonText title="Recuperar senha" onPress={() => { }} />
+        
+        <ButtonText 
+        title="Recuperar senha" 
+        onPress={handleForgotPassword} 
+        />
+
         <ButtonText 
           title="Criar minha conta" 
           onPress={handleCreateUserAccount}
