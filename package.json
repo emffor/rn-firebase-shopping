@@ -11,6 +11,7 @@
   "dependencies": {
     "@expo-google-fonts/roboto": "^0.2.2",
     "@react-native-firebase/app": "^14.8.0",
+    "@react-native-firebase/firestore": "^14.8.1",
     "@react-navigation/bottom-tabs": "^6.3.1",
     "@react-navigation/native": "^6.0.10",
     "expo": "~44.0.2",
