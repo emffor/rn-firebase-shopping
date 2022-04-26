@@ -30,13 +30,19 @@
 
 # Trabalhando com FIREBASE
 
-**Rodar com CLI - FIREBASE não funciona no expo GO**
-terminal 1- yarn react-native start
-terminal 2- npx react-native run-android
+**start cli porque o FireBase não roda no expo GO**
+- yarn react-native start
+- npx react-native run-android
 
 **Instalação React Native FireBase**
-1 - yarn add @react-native-firebase/app
+- 1 - yarn add @react-native-firebase/app
 
 **Para obter Certificado de assinatura de depuração SHA-1**
-2 - cd android && gradlew signingReport
+- 2 - cd android && gradlew signingReport
+
+**Depois da adição da config do firebase no projeto do Android**
+
+1 - add no package.json /*"start": "react-native start"*/
+2 - yarn start
+3 - yarn android *para rodar aplicação com CLI*
 
