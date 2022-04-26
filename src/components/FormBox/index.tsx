@@ -12,7 +12,10 @@ export function FormBox() {
   const [quantity, setQuantity] = useState(0);
 
   async function handleProductAdd(){
-    firestore().collection('products').add({
+    firestore()
+    .collection('products')
+    .doc('id-customized')
+    .set({
       description,
       quantity,
       done: false,
