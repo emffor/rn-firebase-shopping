@@ -46,7 +46,11 @@
 2 - yarn start
 3 - yarn android *para rodar aplicação com CLI*
 
-**Instalar o Firestore**
+**Instalar o Firestore do FireBase**
 
 - yarn add @react-native-firebase/firestore
+
+**Instalar o Storage do Firebase**
+
+- yarn add @react-native-firebase/storage
 

@@ -1500,6 +1500,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-14.8.1.tgz#51e1910411df58a6915ea92cfca9a14e8d8d10f3"
   integrity sha512-w4zJ71avBWn0GzwTnHwhCmIU3je0NtvcVqFKr1BW6/Z1qgkyJUkRh/AQaF42lRyVpoqfLfBu3uGS/AKZgH/TCA==
 
+"@react-native-firebase/storage@^14.8.1":
+  version "14.8.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/storage/-/storage-14.8.1.tgz#4fa1b8c3c28af59f516974501e0add4e05c6a33a"
+  integrity sha512-QePfMGVktlP7gujojP4Dao+NYHtY8/AVhDoz48WY3OnTpUuXmVOr/4IDZbopgthpf7ZI/D/inWwkkimZOyenEA==
+
 "@react-native/assets@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@react-native/assets/-/assets-1.0.0.tgz#c6f9bf63d274bafc8e970628de24986b30a55c8e"
