@@ -12,6 +12,8 @@ import { Container, Content, Progress, Transferred } from './styles';
 
 export function Upload() {
   const [image, setImage] = useState('');
+  const [bytesTransferred, setBytesTransferred] = useState('0');
+  const [progress, setProgress] = useState('0');
 
   async function handlePickImage() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -30,16 +32,22 @@ export function Upload() {
   };
 
   async function handleUpload() {
-    //usar a numeração como estratégia para definir o nome do arquivo,para não sobrescrever o arquivo e ter o nome único. 
     const fileName = new Date().getTime();
-    //salvar dentro dessa pasta e setando e nome da foto.
     const reference = storage().ref(`/images/${fileName}.png`);
 
-    //upload pelo .putFile (image é o endereço da foto no dispositivo)
-    reference
-      .putFile(image)
-      .then(() => Alert.alert('Imagem enviada com sucesso'))
-      .catch((error) => console.error(error));
+    //.putFile envia o arquivo pegando a URI do arquivo
+    const uploadTask = reference.putFile(image);
+
+    //'state_changed' -> estados da mudança do upload
+    uploadTask.on('state_changed', taskSnapshot => {
+      const percent = (( taskSnapshot.bytesTransferred / taskSnapshot.totalBytes ) * 100).toFixed(0);
+      //passando o valor para o setProgress
+      setProgress(percent);
+      //passando o valor para o setBytesTransferred
+      setBytesTransferred(`${taskSnapshot.bytesTransferred} transferido de ${taskSnapshot.totalBytes}`);
+    });
+
+    uploadTask.then(() => Alert.alert('Upload Concluído com sucesso!'));
   }
 
   return (
@@ -55,11 +63,11 @@ export function Upload() {
         />
 
         <Progress>
-          0%
+          {progress}%
         </Progress>
 
         <Transferred>
-          0 de 100 bytes transferido
+          {bytesTransferred} bytes
         </Transferred>
       </Content>
     </Container>
