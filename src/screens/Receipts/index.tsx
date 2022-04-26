@@ -23,8 +23,6 @@ export function Receipts() {
     const info = await storage().ref(path).getMetadata();
     setPhotoInfo(`Upload realizada em ${info.timeCreated}`);
     // console.log('info: ' + info.timeCreated);
-
-    fetchImages();
   }
 
   //deleta arquivos no storage do firebase

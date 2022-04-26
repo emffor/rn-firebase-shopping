@@ -54,3 +54,7 @@
 
 - yarn add @react-native-firebase/storage
 
+**Instalar o Auth do Firebase**
+
+yarn add @react-native-firebase/auth
+

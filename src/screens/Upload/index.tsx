@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as ImagePicker from 'expo-image-picker';
 import { Alert } from 'react-native';
 
@@ -47,7 +47,11 @@ export function Upload() {
       setBytesTransferred(`${taskSnapshot.bytesTransferred} transferido de ${taskSnapshot.totalBytes}`);
     });
 
-    uploadTask.then(() => Alert.alert('Upload Concluído com sucesso!'));
+    uploadTask.then(async() => {
+      const imageUrl = await reference.getDownloadURL();
+      //console.log('imageUrl: ' + imageUrl);
+      Alert.alert('Upload Concluído com sucesso!');
+    });
   }
 
   return (
@@ -73,3 +77,5 @@ export function Upload() {
     </Container>
   );
 }
+
+
