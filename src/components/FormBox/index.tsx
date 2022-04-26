@@ -14,11 +14,12 @@ export function FormBox() {
   async function handleProductAdd(){
     firestore()
     .collection('products')
-    .doc('id-customized')
-    .set({
+    .add({
       description,
       quantity,
       done: false,
+      //trabalhando com datas - timestamp FieldValue.serverTimestamp()
+      createdAt: firestore.FieldValue.serverTimestamp(),
     })
     .then(() => {
       Alert.alert('Produto adicionado com sucesso!');
